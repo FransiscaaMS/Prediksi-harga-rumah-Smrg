@@ -82,9 +82,9 @@ if test == "Labelling":
 
 
 # Fungsi prediksi harga
-def predict_house_price(Jenis_Rumah, Lokasi, KT, KM, Garasi, LT, LB):
+def predict_house_price(Jenis_Rumah, Lokasi, Kamar_Tidur, Kamar_Mandi, Garasi, Luas_Tanah, Luas_Bangunan):
     # Memasukkan data
-    input_data = [[Jenis_Rumah, Lokasi, KT, KM, Garasi, LT, LB]]
+    input_data = [[Jenis_Rumah, Lokasi, Kamar_Tidur, Kamar_Mandi, Garasi, Luas_Tanah, Luas_Bangunan]]
     # Konversi list ke array numpy
     input_data_array = np.array(input_data)
     # Lakukan prediksi menggunakan model RandomForestRegressor
@@ -109,20 +109,20 @@ if test == "Prediksi":
     with col2:
         Lokasi = st.selectbox("Lokasi", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16])
     with col1:
-        KT = st.number_input('Input Jumlah Kamar Tidur', min_value=2, max_value=9)
+        Kamar_Tidur = st.number_input('Input Jumlah Kamar Tidur', min_value=2, max_value=9)
     with col2:
-        KM = st.number_input('Input Jumlah Kamar Mandi', min_value=1, max_value=10)
+        Kamar_Mandi = st.number_input('Input Jumlah Kamar Mandi', min_value=1, max_value=10)
     with col1:
         Garasi = st.number_input('Input Garasi (menampung berapa mobil)', min_value=1, max_value=10)
     with col2:
-        LT = st.number_input('Input Luas Tanah (m2)', min_value=28)
+        Luas_Tanah = st.number_input('Input Luas Tanah (m2)', min_value=28)
     with col1:
-        LB = st.number_input('Input Luas Bangunan (m2)', min_value=29)
+        Luas_Bangunan = st.number_input('Input Luas Bangunan (m2)', min_value=29)
 
     predict = ''
 
     if st.button("Prediksi Harga Rumah"):
-        predict = predict_house_price(Jenis_Rumah, Lokasi, KT, KM, Garasi, LT, LB)
+        predict = predict_house_price(Jenis_Rumah, Lokasi, Kamar_Tidur, Kamar_Mandi, Garasi, Luas_Tanah, Luas_Bangunan)
         st.markdown(f"Berikut merupakan prediksi harga rumah sesuai dengan kriteria yang anda inginkan :<br><h2>{predict}</h2>", unsafe_allow_html=True)
 
 # Halaman Kontak
